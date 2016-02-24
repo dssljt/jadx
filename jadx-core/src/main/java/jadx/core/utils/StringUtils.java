@@ -37,10 +37,10 @@ public class StringUtils {
 			case '\\': res.append("\\\\"); break;
 
 			default:
-				if (32 <= c && c <= 126) {
-					res.append((char) c);
-				} else {
+				if (c < 32 || 127 == c || 255 == c) {
 					res.append("\\u").append(String.format("%04x", c));
+				} else {
+					res.append((char) c);
 				}
 				break;
 		}
